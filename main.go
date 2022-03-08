@@ -325,15 +325,15 @@ func main() {
 	flag.Parse()
 
 	if !*bip39 {
-		fmt.Printf("\n%-34s %-52s %-42s %s\n", "Bitcoin Address", "WIF(Wallet Import Format)", "SegWit(bech32)", "SegWit(nested)")
-		fmt.Println(strings.Repeat("-", 165))
+		//fmt.Printf("\n%-34s %-52s %-42s %s\n", "Bitcoin Address", "WIF(Wallet Import Format)", "SegWit(bech32)", "SegWit(nested)")
+		//fmt.Println(strings.Repeat("-", 165))
 
 		for i := 0; i < *number; i++ {
 			wif, address, segwitBech32, segwitNested, err := Generate(compress)
 			if err != nil {
 				log.Fatal(err)
 			}
-			fmt.Printf("%-34s %s %s %s\n", address, wif, segwitBech32, segwitNested)
+			fmt.Printf("%s,%s,%s,%s,%s\n", address[:4], address, wif, segwitBech32, segwitNested)
 		}
 		fmt.Println()
 		return
